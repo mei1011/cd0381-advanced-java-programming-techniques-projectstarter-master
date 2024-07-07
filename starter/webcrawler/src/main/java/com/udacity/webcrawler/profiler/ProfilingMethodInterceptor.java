@@ -39,7 +39,7 @@ final class ProfilingMethodInterceptor implements InvocationHandler {
 
     try {
       result = method.invoke(delegate, args);
-    } catch (InvocationTargetException | UndeclaredThrowableException ex) {
+    } catch (InvocationTargetException | UndeclaredThrowableException | IllegalAccessException ex) {
       throw ex.getCause();
     } finally {
       recordIfProfiled(isProfiled, startTime, method);
